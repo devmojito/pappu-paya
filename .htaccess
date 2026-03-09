@@ -1,0 +1,6 @@
+# Custom 404 Error Page - serves 404.html when a page is not found
+ErrorDocument 404 /404.html
+
+# If site is in a subdirectory (e.g. example.com/pappu-paya/), use:
+# ErrorDocument 404 /pappu-paya/404.html
+# And update the <base href="/"> in 404.html to <base href="/pappu-paya/">

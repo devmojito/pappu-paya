@@ -1,0 +1,2 @@
+# Netlify automatically serves 404.html for 404 errors when placed in site root.
+# This file ensures the project is recognized; 404 handling works by default.
