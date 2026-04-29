@@ -68,6 +68,28 @@
 	background-image: url("assets/images/page-hero.jpg") !important;
 }
 
+/* ## About Section - Images (match old about-img dimensions: 514x265) ******************************************* */
+.about-section .about-img-block .about-section-img {
+	max-width: 514px;
+	max-height: 265px;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	display: block;
+}
+
+/* ## Catering Inquiry - Center Form ******************************************* */
+.reservation-block .reservation-form-block {
+	float: none !important;
+	margin: 0 auto !important;
+}
+.reservation-block .reservation-form {
+	padding: 0 15px;
+}
+.reservation-block .reservation-form .send-btn {
+	text-align: center;
+}
+
 /* ## About Section - Menu Button ******************************************* */
 .about-section .send-btn {
 	text-align: left;
@@ -682,3 +704,42 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	}
 }
 
+
+/* Footer Instagram tile sizing — keep tiles small (~65px) so 6 fit in a 3x2 grid
+   inside the footer's narrow column, regardless of source image dimensions. */
+.footer-main .top-footer .widget_instagram .instafeed a {
+	display: inline-block;
+	width: 65px;
+	height: 65px;
+	margin: 0 4px 4px 0;
+	overflow: hidden;
+}
+.footer-main .top-footer .widget_instagram .instafeed a img {
+	width: 65px;
+	height: 65px;
+	object-fit: cover;
+	display: block;
+}
+
+/* Bottom footer — copyright left, "Made with ❤" right; stacked & centered on mobile. */
+.bottom-footer .copyright-left  { text-align: left;  }
+.bottom-footer .copyright-right { text-align: right; }
+.bottom-footer .copyright-left p,
+.bottom-footer .copyright-right p { margin: 0; }
+
+@media (max-width: 767px) {
+	.bottom-footer .copyright-left,
+	.bottom-footer .copyright-right { text-align: center; }
+	.bottom-footer .copyright-left p { margin-bottom: 6px; }
+}
+
+/* Footer "Opening Hours" table — never let day names or short time strings wrap. */
+.widget_workingtime table { width: 100%; }
+.widget_workingtime td { white-space: nowrap; }
+.widget_workingtime td + td { padding-left: 6px; }
+
+/* Bigger nav menu — 12px was way too small for the new layout. */
+.header_s .ownavigation .navbar-nav li a {
+	font-size: 15px;
+	letter-spacing: 0.6px;
+}
