@@ -405,7 +405,7 @@
 	$(window).on("load",function() {
 		/* - Site Loader* */
 		if ( !$("html").is(".ie6, .ie7, .ie8") ) {
-			$("#site-loader").delay(1000).fadeOut("slow");
+			$("#site-loader").delay(650).fadeOut("slow");
 		}
 		else {
 			$("#site-loader").css("display","none");

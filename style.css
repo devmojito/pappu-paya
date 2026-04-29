@@ -743,3 +743,31 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	font-size: 15px;
 	letter-spacing: 0.6px;
 }
+
+/* Site preloader — full-screen brand logo (see #site-loader fade in functions.js) */
+#site-loader.site-preloader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #faf8f5;
+}
+#site-loader.site-preloader .site-preloader-inner {
+	text-align: center;
+}
+#site-loader.site-preloader .site-preloader-logo {
+	display: block;
+	margin: 0 auto;
+	max-height: 100px;
+	width: auto;
+	height: auto;
+	-webkit-animation: site-preloader-pulse 1.2s ease-in-out infinite;
+	animation: site-preloader-pulse 1.2s ease-in-out infinite;
+}
+@-webkit-keyframes site-preloader-pulse {
+	0%, 100% { opacity: 1; -webkit-transform: scale(1); transform: scale(1); }
+	50% { opacity: 0.88; -webkit-transform: scale(1.03); transform: scale(1.03); }
+}
+@keyframes site-preloader-pulse {
+	0%, 100% { opacity: 1; -webkit-transform: scale(1); transform: scale(1); }
+	50% { opacity: 0.88; -webkit-transform: scale(1.03); transform: scale(1.03); }
+}
