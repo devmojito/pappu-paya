@@ -237,26 +237,20 @@
 			});
 			
 			$("#home-slider2").revolution({
+				sliderType:"standard",
+				sliderLayout:"fullscreen",
+				fullScreenOffsetContainer:"",
+				fullScreenOffset:"0",
 				delay:6000,
 				responsiveLevels:[1920,1025,768,480],
 				gridwidth:[1920,1025,768,480],
 				gridheight:[878,600,560,400],
 				navigation: {
 					arrows:{
-						enable:true,
-						style:"uranus",
+						enable:false
 					},
 					bullets: {
-						enable:true,
-						style:"zeus",
-						hide_onleave:false,
-						direction:"horizontal",
-						h_align:"center",
-						v_align:"bottom",
-						h_offset:0,
-						v_offset:40,
-						space:10,
-						tmp:''
+						enable:false
 					}
 				},
 			});
@@ -367,7 +361,6 @@
 						$("#rsv_lname").val("");
 						$("#rsv_phone").val("");												
 						$("#rsv_date").val("");							
-						$("#rsv_table").val("");							
 						$("#rsv_email").val("");												
 						$("#rsv_message").val("");
 						$("#alert-msg").show();				

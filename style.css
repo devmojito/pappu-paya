@@ -339,12 +339,45 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 .navbar-brand {
 	height: auto;
 	padding: 0;
+	overflow: visible;
 }
-.navbar-brand img {
-	height: 75px !important;
-	max-height: 75px !important;
+/* Larger logo without growing the nav: oversize image + negative vertical
+   margins so the layout footprint stays at ~75px while the brand reads bigger. */
+.navbar-brand img,
+.ownavigation .navbar-brand img,
+.ownavigation .navbar-brand img[style] {
+	height: 120px !important;
+	max-height: 120px !important;
 	width: auto !important;
 	max-width: none !important;
+	margin-top: -22px !important;
+	margin-bottom: -22px !important;
+	display: block;
+}
+.ownavigation,
+.ownavigation .container,
+.ownavigation .navbar-header {
+	overflow: visible !important;
+}
+@media (max-width: 991px) {
+	.navbar-brand img,
+	.ownavigation .navbar-brand img,
+	.ownavigation .navbar-brand img[style] {
+		height: 95px !important;
+		max-height: 95px !important;
+		margin-top: -10px !important;
+		margin-bottom: -10px !important;
+	}
+}
+@media (max-width: 480px) {
+	.navbar-brand img,
+	.ownavigation .navbar-brand img,
+	.ownavigation .navbar-brand img[style] {
+		height: 80px !important;
+		max-height: 80px !important;
+		margin-top: -3px !important;
+		margin-bottom: -3px !important;
+	}
 }
 
 /* - Nav Items */
@@ -733,6 +766,80 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	.bottom-footer .copyright-left p { margin-bottom: 6px; }
 }
 
+/* Footer — pure black, white body text (footer-main-2 only) */
+.footer-main-2 .top-footer {
+	background-color: #000 !important;
+}
+.footer-main-2 .bottom-footer {
+	background-color: #000 !important;
+}
+.footer-main-2 .top-footer .widget_category ul li a,
+.footer-main-2 .top-footer .widget_links ul li a {
+	color: #fff !important;
+}
+.footer-main-2 .top-footer .widget_category ul li a:hover,
+.footer-main-2 .top-footer .widget_links ul li a:hover {
+	color: #c59d5f !important;
+}
+.footer-main-2 .top-footer .widget_workingtime td {
+	color: #fff !important;
+}
+.footer-main-2 .top-footer .widget_about p {
+	color: #fff !important;
+}
+.footer-main-2 .top-footer .widget_about p a.footer-phone-link {
+	display: block;
+	white-space: nowrap;
+	color: #fff !important;
+	text-decoration: underline;
+	margin-top: 8px;
+	line-height: 1.35;
+}
+.footer-main-2 .top-footer .widget_about p a.footer-phone-link:hover {
+	color: #eccf88 !important;
+}
+/* Keep full phone numbers on one line + neutralize the default blue link color */
+a[href^="tel:"] {
+	white-space: nowrap;
+	color: inherit !important;
+	text-decoration: none !important;
+}
+a[href^="tel:"]:hover,
+a[href^="tel:"]:focus,
+a[href^="tel:"]:active,
+a[href^="tel:"]:visited {
+	color: inherit !important;
+}
+/* On dark photo backgrounds make phone CTAs warm-gold on hover */
+.surprise-content a[href^="tel:"]:hover,
+.page-banner a[href^="tel:"]:hover,
+.testimonial-section a[href^="tel:"]:hover,
+.footer-main a[href^="tel:"]:hover,
+.top-header1 a[href^="tel:"]:hover,
+.srv-content a[href^="tel:"]:hover {
+	color: #c59d5f !important;
+	text-decoration: underline !important;
+}
+.footer-main-2 .top-footer .widget_social ul li a {
+	border-color: rgba(255, 255, 255, 0.45);
+	color: #fff;
+}
+.footer-main-2 .top-footer .widget_social ul li a:hover {
+	border-color: #c59d5f;
+	color: #c59d5f;
+}
+.footer-main-2 .bottom-footer p {
+	color: #fff !important;
+}
+.footer-main-2 .bottom-footer a {
+	color: #fff !important;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.footer-main-2 .bottom-footer a:hover {
+	color: #eccf88 !important;
+}
+
 /* Footer "Opening Hours" table — never let day names or short time strings wrap. */
 .widget_workingtime table { width: 100%; }
 .widget_workingtime td { white-space: nowrap; }
@@ -744,12 +851,92 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	letter-spacing: 0.6px;
 }
 
+/* Glassmorphic header bar + navbar */
+.header_s.header_s1 .top-header1 {
+	background: #000;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.header_s.header_s1 .ownavigation {
+	background: rgba(14, 14, 16, 0.42);
+	-webkit-backdrop-filter: blur(18px) saturate(140%);
+	backdrop-filter: blur(18px) saturate(140%);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 992px) {
+	.header_s.header_s1 .ownavigation ul li > .dropdown-menu {
+		background: rgba(24, 24, 26, 0.82) !important;
+		-webkit-backdrop-filter: blur(20px) saturate(140%);
+		backdrop-filter: blur(20px) saturate(140%);
+		border: 1px solid rgba(255, 255, 255, 0.12) !important;
+		box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+	}
+}
+@media (max-width: 991px) {
+	.header_s.header_s1 .ownavigation .navbar-collapse {
+		background: rgba(12, 12, 14, 0.94);
+		-webkit-backdrop-filter: blur(22px);
+		backdrop-filter: blur(22px);
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+	}
+}
+
+.header_s.header_s2 .top-header1 {
+	background: #000;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Inner pages — dark frosted nav so the food image behind shows through cleanly */
+.header_s.header_s2 .ownavigation {
+	background: rgba(14, 14, 16, 0.42) !important;
+	-webkit-backdrop-filter: blur(18px) saturate(140%);
+	backdrop-filter: blur(18px) saturate(140%);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+.header_s.header_s2 .ownavigation .navbar-nav li a {
+	color: #f4ede0 !important;
+}
+.header_s.header_s2 .ownavigation .navbar-nav > .active > a,
+.header_s.header_s2 .ownavigation .navbar-nav li:hover > a,
+.header_s.header_s2 .ownavigation .navbar-nav li a:hover {
+	color: #eccf88 !important;
+}
+@media (min-width: 992px) {
+	.header_s.header_s2 .ownavigation ul li > .dropdown-menu {
+		background: rgba(24, 24, 26, 0.82) !important;
+		-webkit-backdrop-filter: blur(20px) saturate(140%);
+		backdrop-filter: blur(20px) saturate(140%);
+		border: 1px solid rgba(255, 255, 255, 0.12) !important;
+		box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+	}
+}
+@media (max-width: 991px) {
+	.header_s.header_s2 .ownavigation .navbar-collapse {
+		background: rgba(12, 12, 14, 0.94);
+		-webkit-backdrop-filter: blur(22px);
+		backdrop-filter: blur(22px);
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+	}
+}
+
+/* Pre-nav bar — black bar, white text (home + inner pages) */
+.header_s .top-header1 .top-left span,
+.header_s .top-header1 .top-left span a,
+.header_s .top-header1 .top-right .top-social li a {
+	color: #fff !important;
+}
+.header_s .top-header1 .top-left span a:hover,
+.header_s .top-header1 .top-right .top-social li a:hover {
+	color: #eccf88 !important;
+}
 /* Site preloader — full-screen brand logo (see #site-loader fade in functions.js) */
 #site-loader.site-preloader {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: #faf8f5;
+	background: #000;
 }
 #site-loader.site-preloader .site-preloader-inner {
 	text-align: center;
@@ -757,7 +944,8 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 #site-loader.site-preloader .site-preloader-logo {
 	display: block;
 	margin: 0 auto;
-	max-height: 100px;
+	max-height: 180px;
+	max-width: min(85vw, 320px);
 	width: auto;
 	height: auto;
 	-webkit-animation: site-preloader-pulse 1.2s ease-in-out infinite;
@@ -770,4 +958,564 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 @keyframes site-preloader-pulse {
 	0%, 100% { opacity: 1; -webkit-transform: scale(1); transform: scale(1); }
 	50% { opacity: 0.88; -webkit-transform: scale(1.03); transform: scale(1.03); }
+}
+
+/* Home Revolution Slider — fullscreen hero; kill gray letterboxing on wrappers */
+#home-revslider.slider-section.slider-section2 {
+	margin-bottom: 0 !important;
+}
+/* Give the about section room to breathe under the hero (was 0 — too flush) */
+.site-main > #home-revslider ~ .about-section {
+	margin-top: 0 !important;
+	padding-top: 90px !important;
+}
+@media (max-width: 991px) {
+	.site-main > #home-revslider ~ .about-section {
+		padding-top: 60px !important;
+	}
+}
+@media (max-width: 767px) {
+	#home-revslider.slider-section {
+		margin-bottom: 0 !important;
+	}
+	.site-main > #home-revslider ~ .about-section {
+		padding-top: 50px !important;
+	}
+}
+
+#home-revslider {
+	background-color: #000 !important;
+}
+#home-revslider .rev_slider_wrapper,
+#home-revslider .rev_slider,
+#home-revslider .tp-revslider-mainul {
+	background-color: #000 !important;
+}
+#home-revslider .forcefullwidth_wrapper_tp_banner,
+#home-revslider .rev_slider_wrapper {
+	overflow: hidden !important;
+	background-color: #000 !important;
+}
+
+/* ==========================================================================
+   HOMEPAGE HERO — refined typography, no glass card, smooth transitions
+   ========================================================================== */
+
+#home-slider2 .tp-shape.tp-shapewrapper {
+	z-index: 4 !important;
+}
+
+/* "Welcome to" — script, larger, elegant */
+#home-slider2 .home-hero-welcome {
+	font-family: 'Great Vibes', cursive !important;
+	font-weight: 400 !important;
+	font-style: italic !important;
+	font-size: 88px !important;
+	line-height: 0.95 !important;
+	color: #eccf88 !important;
+	text-align: center !important;
+	letter-spacing: 0.02em !important;
+	text-shadow:
+		0 2px 28px rgba(0, 0, 0, 0.85),
+		0 1px 4px rgba(0, 0, 0, 0.75);
+	margin-bottom: 8px !important;
+	white-space: nowrap !important;
+}
+@media (max-width: 1199px) {
+	#home-slider2 .home-hero-welcome { font-size: 64px !important; }
+}
+@media (max-width: 991px) {
+	#home-slider2 .home-hero-welcome { font-size: 52px !important; }
+}
+@media (max-width: 767px) {
+	#home-slider2 .home-hero-welcome { font-size: 42px !important; }
+}
+
+/* "Pappu Paya" — same Great Vibes script + gold color as "Welcome to",
+   just larger so it reads as the prominent restaurant name. */
+#home-slider2 .home-hero-title {
+	font-family: 'Great Vibes', cursive !important;
+	font-weight: 400 !important;
+	font-style: italic !important;
+	font-size: 130px !important;
+	line-height: 1 !important;
+	color: #eccf88 !important;
+	letter-spacing: 0.02em !important;
+	text-indent: 0 !important;
+	text-align: center !important;
+	text-transform: none !important;
+	text-shadow:
+		0 4px 40px rgba(0, 0, 0, 0.9),
+		0 2px 10px rgba(0, 0, 0, 0.6);
+	margin-bottom: 6px !important;
+	padding-top: 8px !important;
+	white-space: nowrap !important;
+}
+@media (max-width: 1199px) {
+	#home-slider2 .home-hero-title { font-size: 100px !important; }
+}
+@media (max-width: 991px) {
+	#home-slider2 .home-hero-title { font-size: 78px !important; }
+}
+@media (max-width: 767px) {
+	#home-slider2 .home-hero-title { font-size: 56px !important; }
+}
+
+/* Tagline — clean text, no box, no blur, no border */
+#home-slider2 .home-hero-tagline {
+	font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif !important;
+	font-weight: 300 !important;
+	font-size: 20px !important;
+	line-height: 1.6 !important;
+	color: rgba(252, 250, 244, 0.94) !important;
+	letter-spacing: 0.04em !important;
+	text-align: center !important;
+	text-shadow:
+		0 2px 20px rgba(0, 0, 0, 0.85),
+		0 1px 3px rgba(0, 0, 0, 0.75);
+	background: transparent !important;
+	-webkit-backdrop-filter: none !important;
+	backdrop-filter: none !important;
+	border: 0 !important;
+	box-shadow: none !important;
+	border-radius: 0 !important;
+	padding: 0 !important;
+	max-width: 720px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	box-sizing: border-box !important;
+}
+@media (max-width: 991px) {
+	#home-slider2 .home-hero-tagline { font-size: 17px !important; }
+}
+@media (max-width: 767px) {
+	#home-slider2 .home-hero-tagline {
+		font-size: 14px !important;
+		max-width: 92vw !important;
+	}
+}
+
+/* Smooth/snappy slide transition — kill the checkerboard / boxed defaults */
+#home-slider2 .tp-revslider-slidesli,
+#home-revslider .tp-revslider-slidesli {
+	transition: opacity 800ms ease-in-out !important;
+}
+/* Subtle ken-burns zoom on the active slide background, paused on transitioning slide */
+#home-slider2 .tp-bgimg.defaultimg,
+#home-slider2 li.active-revslide .tp-bgimg.defaultimg,
+#home-slider2 li.active-revslide > img.rev-slidebg {
+	-webkit-animation: hero-kenburns 14s ease-in-out infinite alternate;
+	animation: hero-kenburns 14s ease-in-out infinite alternate;
+}
+@-webkit-keyframes hero-kenburns {
+	from { -webkit-transform: scale(1.0); transform: scale(1.0); }
+	to   { -webkit-transform: scale(1.07); transform: scale(1.07); }
+}
+@keyframes hero-kenburns {
+	from { -webkit-transform: scale(1.0); transform: scale(1.0); }
+	to   { -webkit-transform: scale(1.07); transform: scale(1.07); }
+}
+
+/* Bullets + arrows — fully hidden on the homepage hero */
+#home-revslider .tp-bullets,
+#home-revslider .tparrows,
+#home-revslider .tp-tabs,
+#home-revslider .tp-thumbs,
+#home-slider2 ~ .tp-bullets,
+#home-slider2 ~ .tparrows {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
+	pointer-events: none !important;
+}
+
+/* Freeze hero text — same Welcome / PAPPU PAYA / tagline on every slide,
+   so it must NOT re-animate when the background image cross-fades. */
+#home-slider2 .home-hero-welcome,
+#home-slider2 .home-hero-title,
+#home-slider2 .home-hero-tagline {
+	opacity: 1 !important;
+	visibility: visible !important;
+	transform: none !important;
+	-webkit-transform: none !important;
+	transition: none !important;
+	-webkit-transition: none !important;
+	animation: none !important;
+	-webkit-animation: none !important;
+}
+
+/* ==========================================================================
+   HOMEPAGE HEADER — float the navbar over the slider so frosted glass picks
+   up the food image (instead of looking grey against the body background)
+   ========================================================================== */
+.header_s.header_s1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	width: 100%;
+}
+/* ==========================================================================
+   INNER PAGES — page-banner overlaps the navbar so frosted glass picks up
+   the food image behind the nav (about / menu / contact / catering / 404)
+   ========================================================================== */
+
+/* Stack header above content so the navbar floats over the page-banner */
+.header_s {
+	position: relative;
+	z-index: 100;
+}
+.header_s .ownavigation {
+	position: relative;
+	z-index: 100;
+}
+/* The top black bar should also stack on top of any negative-margin neighbour */
+.header_s .top-header1 {
+	position: relative;
+	z-index: 101;
+}
+
+/* Pull the page banner up under the navbar (keeps text where it was) */
+.page-banner {
+	margin-top: -115px !important; /* match navbar height incl. brand padding */
+	padding-top: 245px !important;  /* original 130 + 115 to keep text centered */
+	z-index: 1;
+	background-position: center center !important;
+	background-size: cover !important;
+}
+/* Soften the dark overlay so the food image is visible through the frosted nav */
+.page-banner::before {
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0.45) 0%,
+		rgba(0, 0, 0, 0.55) 40%,
+		rgba(0, 0, 0, 0.7) 100%
+	) !important;
+}
+.page-banner h3 {
+	text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.7);
+	font-size: 38px !important;
+	letter-spacing: 4px !important;
+}
+/* Hide breadcrumbs from every page hero */
+.page-banner ol.breadcrumb,
+.page-banner .breadcrumb {
+	display: none !important;
+}
+@media (max-width: 991px) {
+	.page-banner {
+		margin-top: -100px !important;
+		padding-top: 200px !important;
+	}
+}
+@media (max-width: 767px) {
+	.page-banner {
+		margin-top: -90px !important;
+		padding-top: 175px !important;
+	}
+}
+
+/* ==========================================================================
+   "BROKEN HEART / BIRYANI" — kill the gray + black bars, tame the zoom
+   ========================================================================== */
+
+.surprise-section {
+	background-color: #1a1410 !important;
+	/* Cover the section fully so we never see a strip of bg color */
+	background-size: cover !important;
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+	padding-top: 130px !important;
+	padding-bottom: 130px !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	/* Break out of the .main-container's 1920px max so the image always
+	   spans the full viewport width — no black bars on wide monitors. */
+	width: 100vw !important;
+	max-width: 100vw !important;
+	margin-left: calc(50% - 50vw) !important;
+	margin-right: calc(50% - 50vw) !important;
+	position: relative;
+}
+/* Stronger, top-to-bottom darkening so the image becomes mood, not subject */
+.surprise-section::before {
+	background: linear-gradient(
+		180deg,
+		rgba(20, 14, 8, 0.72) 0%,
+		rgba(20, 14, 8, 0.55) 50%,
+		rgba(20, 14, 8, 0.78) 100%
+	) !important;
+}
+@media (max-width: 991px) {
+	.surprise-section {
+		padding-top: 90px !important;
+		padding-bottom: 90px !important;
+	}
+}
+@media (max-width: 767px) {
+	.surprise-section {
+		padding-top: 70px !important;
+		padding-bottom: 70px !important;
+		background-size: cover !important; /* small screens look better filled */
+	}
+}
+.surprise-content h3 {
+	font-size: 56px !important;
+	line-height: 1.15 !important;
+}
+@media (max-width: 767px) {
+	.surprise-content h3 { font-size: 36px !important; }
+}
+
+/* ==========================================================================
+   "WHAT'S HAPPENING" — clean modern cards (image on top, content below)
+   ========================================================================== */
+
+.latest-events-section .events-item {
+	background: #fff !important;
+	border: 1px solid rgba(0, 0, 0, 0.06) !important;
+	border-radius: 10px !important;
+	overflow: hidden !important;
+	box-shadow: 0 6px 24px rgba(20, 14, 8, 0.08) !important;
+	transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+.latest-events-section .events-item:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 14px 36px rgba(20, 14, 8, 0.16) !important;
+}
+.latest-events-section .events-item > img {
+	display: block !important;
+	width: 100% !important;
+	height: 240px !important;
+	object-fit: cover !important;
+}
+.latest-events-section .events-item .event-content {
+	position: static !important;
+	background: #fff !important;
+	color: #1a1a1a !important;
+	padding: 28px 26px 30px !important;
+	text-align: center !important;
+	flex: 1 1 auto !important;
+}
+.latest-events-section .events-item .event-content h4 {
+	color: #1a1a1a !important;
+	font-style: italic !important;
+	font-size: 18px !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.4px !important;
+	margin-top: 0 !important;
+	margin-bottom: 18px !important;
+	padding-bottom: 16px !important;
+	position: relative !important;
+}
+.latest-events-section .events-item .event-content h4::before {
+	background-color: #c59d5f !important;
+	content: "" !important;
+	height: 2px !important;
+	width: 56px !important;
+	position: absolute !important;
+	left: 50% !important;
+	right: auto !important;
+	bottom: 0 !important;
+	transform: translateX(-50%);
+	margin: 0 !important;
+}
+.latest-events-section .events-item .event-content p {
+	color: #4a4a4a !important;
+	font-size: 14px !important;
+	line-height: 1.55 !important;
+	margin-bottom: 14px !important;
+}
+.latest-events-section .events-item .event-content span {
+	color: #c59d5f !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 6px !important;
+	font-size: 13px !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.4px !important;
+	margin-top: 6px !important;
+	margin-bottom: 16px !important;
+	width: auto !important;
+}
+.latest-events-section .events-item .event-content span i {
+	margin-right: 4px;
+}
+.latest-events-section .events-item .event-content > a {
+	background-color: #c59d5f !important;
+	color: #fff !important;
+	display: inline-block !important;
+	opacity: 1 !important;
+	height: auto !important;
+	padding: 11px 22px !important;
+	font-size: 12px !important;
+	font-weight: 700 !important;
+	letter-spacing: 1px !important;
+	border-radius: 4px !important;
+	text-transform: uppercase !important;
+}
+.latest-events-section .events-item:hover .event-content {
+	background: #fff !important;
+	padding-bottom: 30px !important;
+}
+.latest-events-section .events-item:hover .event-content > a {
+	background-color: #b08643 !important;
+}
+.latest-events-section .events-item .event-content > a:hover {
+	background-color: #1a1a1a !important;
+	color: #fff !important;
+}
+
+/* ==========================================================================
+   "WHAT'S HAPPENING" — equalize card heights (flex on the bootstrap row)
+   ========================================================================== */
+.latest-events-section .row {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	align-items: stretch !important;
+}
+.latest-events-section .row > [class*="col-"] {
+	display: flex !important;
+}
+.latest-events-section .row > [class*="col-"] > .events-item {
+	width: 100% !important;
+	height: 100% !important;
+	margin-bottom: 30px;
+}
+@media (max-width: 767px) {
+	.latest-events-section .row {
+		display: block !important;
+	}
+	.latest-events-section .row > [class*="col-"] {
+		display: block !important;
+	}
+}
+
+/* ==========================================================================
+   TESTIMONIALS — shorter section, larger readable quote text
+   ========================================================================== */
+.testimonial-section {
+	padding-top: 90px !important;
+	padding-bottom: 90px !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+.testimonial-section .item > p {
+	font-size: 18px !important;
+	line-height: 1.7 !important;
+	color: #d8d8d8 !important;
+	max-width: 760px;
+	margin: 0 auto;
+}
+.testimonial-section .item > i {
+	margin-top: 22px !important;
+}
+.testimonial-section .item > h5 {
+	margin-top: 22px !important;
+	font-size: 28px !important;
+}
+.testimonial-section .carousel-indicators {
+	margin-top: 36px !important;
+}
+
+/* ==========================================================================
+   FOOTER — kill the gap between the last section and the footer
+   ========================================================================== */
+.testimonial-section,
+.site-main > .testimonial-section {
+	margin-bottom: 0 !important;
+}
+.site-main > .clearfix {
+	height: 0 !important;
+	min-height: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+main.site-main {
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+}
+.footer-main,
+#footer-main {
+	margin-top: 0 !important;
+}
+
+/* ==========================================================================
+   FOOTER — softer dark (warm, eye-friendly) instead of pure #000
+   ========================================================================== */
+.footer-main-2 .top-footer {
+	background-color: #1c1814 !important;
+}
+.footer-main-2 .bottom-footer {
+	background-color: #14110d !important;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+/* Hide the legacy "Your email / submit" subscribe widget across the site */
+.footer-main .widget_subscribe,
+.widget_subscribe {
+	display: none !important;
+}
+
+/* ==========================================================================
+   MODERN SOCIAL ICONS — override FontAwesome 4 with current brand SVGs
+   (applies anywhere fa-facebook / fa-twitter / fa-whatsapp / fa-instagram /
+    fa-youtube is used — top header + footer on every page)
+   ========================================================================== */
+
+.fa.fa-facebook,
+.fa.fa-twitter,
+.fa.fa-whatsapp,
+.fa.fa-instagram,
+.fa.fa-youtube,
+.fa.fa-youtube-play {
+	font-family: inherit !important; /* stop Webfont from drawing its own glyph */
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	line-height: 1;
+	vertical-align: -0.12em;
+}
+.fa.fa-facebook::before,
+.fa.fa-twitter::before,
+.fa.fa-whatsapp::before,
+.fa.fa-instagram::before,
+.fa.fa-youtube::before,
+.fa.fa-youtube-play::before {
+	content: "" !important;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	background-color: currentColor;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	font-family: inherit !important;
+	font-weight: inherit !important;
+}
+.fa.fa-facebook::before {
+	-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/></svg>");
+	mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/></svg>");
+}
+.fa.fa-twitter::before {
+	-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z'/></svg>");
+	mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z'/></svg>");
+}
+.fa.fa-whatsapp::before {
+	-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z'/></svg>");
+	mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z'/></svg>");
+}
+.fa.fa-instagram::before {
+	-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z'/></svg>");
+	mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z'/></svg>");
+}
+.fa.fa-youtube::before,
+.fa.fa-youtube-play::before {
+	-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/></svg>");
+	mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/></svg>");
 }

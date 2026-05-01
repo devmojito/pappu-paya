@@ -80,14 +80,6 @@ if(
 			}
 		}
 		
-		if( !isset( $_POST['rsv-table'] ) || empty( $_POST['rsv-table'] ) ) {
-			if( $fields == "" ) {
-				$fields .= "Table";
-			} else {
-				$fields .= ", Table";
-			}
-		}
-		
 		if( !isset( $_POST['rsv-email'] ) || empty( $_POST['rsv-email'] ) ) {
 			if( $fields == "" ) {
 				$fields .= "Email";
@@ -118,7 +110,6 @@ if(
 		$msg .= "Last Name: ".$_POST['rsv-lname']."\r\n";
 		$msg .= "Phone: ".$_POST['rsv-phone']."\r\n";
 		$msg .= "Date: ".$_POST['rsv-date']."\r\n";
-		$msg .= "Table: ".$_POST['rsv-table']."\r\n";
 		$msg .= "Email: ".$_POST['rsv-email']."\r\n";
 		$msg .= "Message: ".$_POST['rsv-message']."\r\n";
 		
